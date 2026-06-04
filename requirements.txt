@@ -1,0 +1,16 @@
+Build an Employee Management System.
+
+Features:
+
+- Employee Registration
+- Login
+- Leave Management
+- Attendance Tracking
+- Admin Dashboard
+- Reports Generation
+
+Users:
+
+- Employee
+- Manager
+- Admin
