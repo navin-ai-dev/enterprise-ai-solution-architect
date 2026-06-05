@@ -1,11 +1,7 @@
 import streamlit as st
 
 from utils.pdf_reader import extract_text
-from agents.requirement_agent import analyze_requirements
-from agents.api_agent import generate_api_design
-from agents.database_agent import generate_database_design
-from agents.risk_agent import generate_risk_analysis
-from agents.testcase_agent import generate_test_cases
+from workflow.orchestrator import run_workflow
 
 st.set_page_config(page_title="Enterprise AI Architect")
 
@@ -27,37 +23,23 @@ if uploaded_file:
 
     st.markdown("Calling AI Agent...")
 
-    with st.spinner("Analyzing Requirements..."):
-        analysis = analyze_requirements(text)
+    
 
-    st.markdown("Agent completed.")
-
+    results = run_workflow(text)
     st.subheader("Requirement Analysis")
-    st.markdown(analysis)
-
-    from agents.userstory_agent import generate_user_stories
-    with st.spinner("Generating userstories..."):
-        stories = generate_user_stories(text)
+    st.markdown(results["requirements"])
 
     st.subheader("User Stories")
-    st.markdown(stories)
-    with st.spinner("generating api designs..."):
-        api_design = generate_api_design(text)
+    st.markdown(results["stories"])
 
     st.subheader("API Design")
-    st.markdown(api_design)
-    with st.spinner("Generating database design..."):
-        database_design = generate_database_design(text)
+    st.markdown(results["api"])
 
     st.subheader("Database Design")
-    st.markdown(database_design)
-    with st.spinner("Generating risk analysis..."):
-        risk_analysis = generate_risk_analysis(text)
+    st.markdown(results["database"])
 
     st.subheader("Risk Analysis")
-    st.markdown(risk_analysis)
-    with st.spinner("Generating Test Cases..."):
-        test_cases = generate_test_cases(text)
+    st.markdown(results["risk"])
 
     st.subheader("Test Cases")
-    st.markdown(test_cases)
+    st.markdown(results["testcases"])
