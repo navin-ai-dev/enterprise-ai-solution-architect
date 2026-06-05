@@ -1,5 +1,5 @@
 ﻿import streamlit as st
-
+from agents.manager_agent import manager_agent
 from utils.pdf_reader import extract_text
 from workflow.orchestrator import run_workflow
 from utils.report_generator import generate_report
