@@ -1,8 +1,8 @@
-import streamlit as st
+﻿import streamlit as st
 
 from utils.pdf_reader import extract_text
 from workflow.orchestrator import run_workflow
-
+from utils.report_generator import generate_report
 st.set_page_config(page_title="Enterprise AI Architect")
 
 st.title("Enterprise AI Architect Agent")
@@ -43,3 +43,12 @@ if uploaded_file:
 
     st.subheader("Test Cases")
     st.markdown(results["testcases"])
+    pdf_file = generate_report(results)
+    with open(pdf_file, "rb") as file:
+
+        st.download_button(
+            label="📄 Download Enterprise Report",
+            data=file,
+            file_name=pdf_file,
+            mime="application/pdf"
+        )
