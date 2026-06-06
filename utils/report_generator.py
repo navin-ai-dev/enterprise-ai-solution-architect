@@ -29,24 +29,15 @@ def generate_report(results):
 
     sections = {
 
-        "Requirement Analysis":
-        results["requirements"],
+    "Requirement Analysis":
+    results["requirements"],
 
-        "User Stories":
-        results["stories"],
+    "User Stories":
+    results["stories"],
 
-        "API Design":
-        results["api"],
-
-        "Database Design":
-        results["database"],
-
-        "Risk Analysis":
-        results["risk"],
-
-        "Test Cases":
-        results["testcases"]
-    }
+    "API Design":
+    results["api"]
+}
 
     for heading, content in sections.items():
 

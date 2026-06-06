@@ -1,5 +1,5 @@
 ﻿import streamlit as st
-from agents.manager_agent import manager_agent
+
 from utils.pdf_reader import extract_text
 from workflow.orchestrator import run_workflow
 from utils.report_generator import generate_report
@@ -35,14 +35,7 @@ if uploaded_file:
     st.subheader("API Design")
     st.markdown(results["api"])
 
-    st.subheader("Database Design")
-    st.markdown(results["database"])
-
-    st.subheader("Risk Analysis")
-    st.markdown(results["risk"])
-
-    st.subheader("Test Cases")
-    st.markdown(results["testcases"])
+    
     pdf_file = generate_report(results)
     with open(pdf_file, "rb") as file:
 
