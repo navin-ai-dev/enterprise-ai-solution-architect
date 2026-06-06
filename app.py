@@ -1,5 +1,5 @@
 ﻿import streamlit as st
-
+from streamlit_mermaid import st_mermaid
 from utils.pdf_reader import extract_text
 from workflow.orchestrator import run_workflow
 from utils.report_generator import generate_report
@@ -40,6 +40,7 @@ if uploaded_file:
         results["architecture"],
         language="text"
     )
+    st_mermaid(results["architecture"])
     
     pdf_file = generate_report(results)
     with open(pdf_file, "rb") as file:
