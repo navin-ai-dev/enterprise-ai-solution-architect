@@ -1,51 +1,30 @@
-
 # Enterprise AI Solution Architect
 
-A Multi-Agent AI System that converts business requirements into complete technical solution designs.
+## Overview
 
-## Features
+Enterprise AI Solution Architect is a multi-agent AI system that transforms business requirements into technical artifacts.
+
+### Features
 
 * Requirement Analysis Agent
 * User Story Generation Agent
 * API Design Agent
-* Database Design Agent
-* Risk Analysis Agent
-* Test Case Generation Agent
+* Architecture Diagram Generator
+* Enterprise PDF Report Generator
 
-## Workflow
-
-Requirement PDF
-→ Requirement Analysis
-→ User Stories
-→ API Design
-→ Database Design
-→ Risk Analysis
-→ Test Cases
-
-## Tech Stack
+### Tech Stack
 
 * Python
 * Streamlit
-* Ollama
-* Llama 3.2
 * LangChain
-* PyPDF
+* Groq
+* Mermaid
+* ReportLab
 
-## Future Enhancements
+### Live Demo
 
-* LangGraph Orchestration
-* Architecture Diagram Generation
-* PDF Report Export
-* RAG Integration
-* Enterprise Knowledge Base
+https://enterprise-ai-solution-architect-ptjjynkpxx7jzodrch8hvg.streamlit.app/
 
-## Run Locally
+### Workflow
 
-pip install -r requirements.txt
-
-streamlit run app.py
-
-## Author
-
-Navin T
-AI Developer | Python Developer
+Requirement PDF → AI Agents → Architecture Design → Enterprise Report
