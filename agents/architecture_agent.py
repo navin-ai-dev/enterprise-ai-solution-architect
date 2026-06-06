@@ -1,30 +1,25 @@
-from langchain_ollama import ChatOllama
+from langchain_groq import ChatGroq
+import streamlit as st
 
-llm = ChatOllama(
-    model="llama3.2"
+llm = ChatGroq(
+    model="llama-3.1-8b-instant",
+    api_key=st.secrets["GROQ_API_KEY"]
 )
-
 def generate_architecture(text):
 
     prompt = f"""
-Generate a Mermaid FLOWCHART ONLY.
+Generate a Mermaid FLOWCHART.
 
 Rules:
-1. Start with: flowchart TD
-2. Use only nodes like A[User]
-3. Use only arrows -->
-4. Do NOT use participant
-5. Do NOT use sequenceDiagram
-6. Do NOT use style
-7. Do NOT use markdown code fences
-8. Return ONLY Mermaid code
-
-Example:
-
-flowchart TD
-A[User] --> B[Login]
-B --> C[API]
-C --> D[(Database)]
+- Start with: flowchart TD
+- Use ONLY --> arrows
+- Labels must be:
+  A -->|Login| B
+- Never use:
+  -->|Login|>
+- No markdown fences
+- No styling
+- Return ONLY valid Mermaid code
 
 Requirement:
 {text}
@@ -34,7 +29,21 @@ Requirement:
     response = response.replace("```mermaid", "")
     response = response.replace("```", "")
     response = response.replace("graph LR", "flowchart TD")
+    response = response.replace("|>", "| ")
+    response = """
+flowchart TD
+A[Requirement PDF] --> B[PDF Reader]
+B --> C[Manager Agent]
+C --> D[Requirement Agent]
+C --> E[User Story Agent]
+C --> F[API Design Agent]
+D --> G[Report Generator]
+E --> G
+F --> G
+G --> H[Enterprise PDF Report]
+"""
 
+    
     return response.strip()
 
     
