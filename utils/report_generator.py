@@ -36,7 +36,10 @@ def generate_report(results):
     results["stories"],
 
     "API Design":
-    results["api"]
+    results["api"],
+
+    "Architecture Diagram":
+    results["architecture"]
 }
 
     for heading, content in sections.items():

@@ -34,7 +34,12 @@ if uploaded_file:
 
     st.subheader("API Design")
     st.markdown(results["api"])
+    st.subheader("Architecture Diagram")
 
+    st.code(
+        results["architecture"],
+        language="text"
+    )
     
     pdf_file = generate_report(results)
     with open(pdf_file, "rb") as file:
